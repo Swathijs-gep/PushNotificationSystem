@@ -13,10 +13,10 @@ namespace PushNotification
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MyPushNotificationEntities : DbContext
+    public partial class MyPushNotificationEntities1 : DbContext
     {
-        public MyPushNotificationEntities()
-            : base("name=MyPushNotificationEntities")
+        public MyPushNotificationEntities1()
+            : base("name=MyPushNotificationEntities1")
         {
         }
     
@@ -25,6 +25,8 @@ namespace PushNotification
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<notification> notifications { get; set; }
     }
 }

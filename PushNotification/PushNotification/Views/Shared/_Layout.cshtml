@@ -127,7 +127,7 @@
                             $('#notiContent').append($('<li>No data available</li>'));
                         }
                         $.each(response, function (index, value) {
-                            $('#notiContent').append($('<li>New contact : ' + value.ContactName + ' (' + value.ContactNo + ') added</li>'));
+                            $('#notiContent').append($('<li> Title: <strong>' + value.title + '</strong> <br> Body: <strong>' + value.body.substr(0,50) + '... </strong> <br> Category: <strong>' + value.category + '</strong> </li>'));
                         });
                     },
                     error: function (error) {

@@ -14,7 +14,7 @@ namespace PushNotification
         public void RegisterNotification(DateTime currentTime)
         {
             string conStr = ConfigurationManager.ConnectionStrings["sqlConString"].ConnectionString;
-            string sqlCommand = @"SELECT [ContactID],[ContactName],[ContactNo] from [dbo].[Contacts] where [AddedOn] > @AddedOn";
+            string sqlCommand = @"SELECT [notification_id],[title],[body],[category] from [dbo].[notifications] where [AddedOn] > @AddedOn";
             //you can notice here I have added table name like this [dbo].[Contacts] with [dbo], its mendatory when you use Sql Dependency
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -52,11 +52,11 @@ namespace PushNotification
             }
         }
 
-        public List<Contact> GetContacts(DateTime afterDate)
+        public List<notification> GetContacts(DateTime afterDate)
         {
-            using (MyPushNotificationEntities dc = new MyPushNotificationEntities())
+            using (MyPushNotificationEntities1 dc = new MyPushNotificationEntities1())
             {
-                return dc.Contacts.Where(a => a.AddedOn > afterDate).OrderByDescending(a => a.AddedOn).ToList();
+                return dc.notifications.Where(a => a.AddedOn > afterDate).OrderByDescending(a => a.AddedOn).ToList();
             }
         }
     }
