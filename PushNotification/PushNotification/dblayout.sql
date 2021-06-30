@@ -25,3 +25,5 @@ CREATE TABLE [dbo].[notifications] (
 
 
 Alter Database MyPushNotification set Enable_Broker
+
+insert into notifications (title,body,category,AddedOn) values('Deilveries will be delayed', 'COVID 19 lockdowns are slowing down deliveries. Usual deadlines not applicable',4,GETDATE());
